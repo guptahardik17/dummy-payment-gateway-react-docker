@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  client:
+    container_name: payment-gateway
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - 80:80
+    environment:
+      - CHOKIDAR_USEPOLLING=true 
